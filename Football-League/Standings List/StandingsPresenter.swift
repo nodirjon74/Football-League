@@ -28,7 +28,7 @@ class StandingsPresenter: StandingViewPresent {
 
     func viewDidLoad() {
         
-        ntw.getMethod(urlParam, view: view!) { data in
+        ntw.requestData(from: urlParam, view: view!) { data in
             let decoder = JSONDecoder()
 
             do {

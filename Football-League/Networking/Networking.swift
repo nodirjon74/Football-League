@@ -15,7 +15,7 @@ protocol ViewUpdate {
 struct Networking {
     
 
-    func getMethod(_ url: String, view: ViewUpdate, completion: @escaping (_ data: Data) -> Codable?, onFailure: () -> Void ) {
+    func requestData(from url: String, view: ViewUpdate, completion: @escaping (_ data: Data) -> Codable?, onFailure: () -> Void ) {
         guard let url = URL(string: "https://api-football-standings.azharimm.site/leagues" + url) else {
             print("Error: cannot create URL")
             return
@@ -40,8 +40,8 @@ struct Networking {
             
             do {
                 DispatchQueue.main.async {
-                    let datas = completion(safeData)
-                    view.didUpdateData(datas!)
+                    let json = completion(safeData)
+                    view.didUpdateData(json!)
                     //print(prettyPrintedJson)
                 }
             }

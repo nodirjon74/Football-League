@@ -7,24 +7,14 @@
 
 import UIKit
 
-protocol StandingsView: AnyObject {
-    
-    func didUpdateData(_ model: StandingModel)
-    func didFailWithError(error: Error)
-}
-
 class StandingViewController: UIViewController {
     
     //MARK: - Properties
     var expandedSectionHeaderNumber: Int = -1
 
     var expandedSectionHeader: UITableViewHeaderFooterView!
-
-    var sectionItems: Array = [[]]
-
-    var sectionNames: Array<String> = []
     
-    var kHeaderSectionTag = 1
+    var kHeaderSectionTag = 6900
     
     // MARK: - Properties
     var standings: [Standings] = []
@@ -44,7 +34,6 @@ class StandingViewController: UIViewController {
         let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.tableFooterView = UIView()
         tableView.register(StandingsTableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -75,6 +64,8 @@ class StandingViewController: UIViewController {
 
 extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
     
+    
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         if standings.count > 0 {
             return standings.count
@@ -83,19 +74,24 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if (self.expandedSectionHeaderNumber == section) {
-            let arrayOfItems = standings[section].stats as NSArray
             
-            return arrayOfItems.count;
+            let arrayOfItems = standings[section].stats
+            return arrayOfItems.count
+            
         } else {
-            return 0;
+            return 0
         }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if (self.standings.count != 0) {
-            return self.standings[section].team.displayName as String
+            return self.standings[section].team.displayName
         }
         return ""
     }
@@ -110,7 +106,7 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
             viewWithTag.removeFromSuperview()
         }
         let headerFrame = self.view.frame.size
-        let theImageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18));
+        let theImageView = UIImageView(frame: CGRect(x: headerFrame.width - 32, y: 13, width: 18, height: 18))
         theImageView.image = UIImage(named: "Chevron-Dn-Wht")
         theImageView.tag = kHeaderSectionTag + section
         header.addSubview(theImageView)
@@ -156,10 +152,10 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableViewCollapeSection(_ section: Int, imageView: UIImageView) {
-        let sectionData = self.standings[section].stats as NSArray
-        self.expandedSectionHeaderNumber = -1;
+        let sectionData = self.standings[section].stats
+        self.expandedSectionHeaderNumber = -1
         if (sectionData.count == 0) {
-            return;
+            
         } else {
             UIView.animate(withDuration: 0.4, animations: {
                 imageView.transform = CGAffineTransform(rotationAngle: (0.0 * CGFloat(Double.pi)) / 180.0)
@@ -179,10 +175,10 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableViewExpandSection(_ section: Int, imageView: UIImageView) {
         
-        let sectionData = self.standings[section].stats as NSArray
+        let sectionData = self.standings[section].stats
         if (sectionData.count == 0) {
-            self.expandedSectionHeaderNumber = -1;
-            return;
+            self.expandedSectionHeaderNumber = -1
+            
         } else {
             UIView.animate(withDuration: 0.4, animations: {
                 imageView.transform = CGAffineTransform(rotationAngle: (180.0 * CGFloat(Double.pi)) / 180.0)
@@ -202,19 +198,6 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
     
     
 }
-
-//extension StandingViewController: StandingsView {
-//
-//    func didUpdateData(_ model: StandingModel) {
-//        self.standings = model.data.standings
-//        self.tableView.reloadData()
-//    }
-//
-//    func didFailWithError(error: Error) {
-//        print(error)
-//    }
-//
-//}
 
 extension StandingViewController: ViewUpdate {
     

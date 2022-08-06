@@ -24,8 +24,7 @@ class LeaguePresenter: LeagueViewPresenter {
     }
     
     func viewDidLoad() {
-        //MARK: - Networking
-        ntw.getMethod("", view: view!) { data in
+        ntw.requestData(from: "", view: view!) { data in
             let decoder = JSONDecoder()
 
             do {

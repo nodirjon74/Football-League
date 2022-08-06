@@ -28,7 +28,7 @@ class SeasonPresnter: SeasonViewPresent {
     
     func viewDidLoad() {
         //MARK: - Networking
-        ntw.getMethod(urlParam, view: view!) { data in
+        ntw.requestData(from: urlParam, view: view!) { data in
             let decoder = JSONDecoder()
 
             do {

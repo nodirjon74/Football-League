@@ -78,15 +78,14 @@
 		2C18CDFF289BE04500FF5D91 /* Football-League */ = {
 			isa = PBXGroup;
 			children = (
-				2C18CE00289BE04500FF5D91 /* AppDelegate.swift */,
-				2C18CE02289BE04500FF5D91 /* SceneDelegate.swift */,
+				2C194A96289EA828000D3ED0 /* Delegate */,
 				2C18CE14289BE89200FF5D91 /* League List */,
+				2C194A89289D1DBF000D3ED0 /* Seasons List */,
+				2C194A92289D3E83000D3ED0 /* Standings List */,
+				2C194A95289EA81C000D3ED0 /* Networking */,
 				2C18CE09289BE04700FF5D91 /* Assets.xcassets */,
 				2C18CE0B289BE04700FF5D91 /* LaunchScreen.storyboard */,
 				2C18CE0E289BE04700FF5D91 /* Info.plist */,
-				2C194A89289D1DBF000D3ED0 /* Seasons List */,
-				2C194A92289D3E83000D3ED0 /* Standings List */,
-				2C194A93289D3EB2000D3ED0 /* Networking.swift */,
 			);
 			path = "Football-League";
 			sourceTree = "<group>";
@@ -130,6 +129,23 @@
 				2C194A8C289D252C000D3ED0 /* StandingModel.swift */,
 			);
 			path = "Standings List";
+			sourceTree = "<group>";
+		};
+		2C194A95289EA81C000D3ED0 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2C194A93289D3EB2000D3ED0 /* Networking.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2C194A96289EA828000D3ED0 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				2C18CE00289BE04500FF5D91 /* AppDelegate.swift */,
+				2C18CE02289BE04500FF5D91 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
