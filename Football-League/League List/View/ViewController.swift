@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol UpdateView: AnyObject {
-    
-    func didUpdateData(_ model: LeagueModel)
-    func didFailWithError(error: Error)
-}
-
 class ViewController: UIViewController {
     
     
@@ -51,6 +45,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     var leaguedata: [LeagueData] = []
+    var leagueModel: LeagueModel?
     var present: LeagueViewPresenter!
     
     
@@ -107,7 +102,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newViewController = SeasonsViewController()
-        let present = SeasonPresnter(view: newViewController)
+        newViewController.leagueId = leaguedata[indexPath.row].id
+        let present = SeasonPresnter(view: newViewController, "/\(leaguedata[indexPath.row].id)/seasons")
         newViewController.present = present
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
@@ -115,9 +111,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 //MARK: - Protocol Impl
 
-extension ViewController: UpdateView {
-    func didUpdateData(_ model: LeagueModel) {
-        leaguedata = model.data
+extension ViewController: ViewUpdate {
+    
+    func didUpdateData(_ model: Codable) {
+        leagueModel = model as? LeagueModel
+        leaguedata = leagueModel!.data
         tableView.reloadData()
     }
     

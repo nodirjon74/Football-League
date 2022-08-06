@@ -7,19 +7,13 @@
 
 import UIKit
 
-protocol UpdateView1: AnyObject {
-    
-    func didUpdateData(_ model: SeasonsModel)
-    func didFailWithError(error: Error)
-}
-
 class SeasonsViewController: UIViewController {
     
     // MARK: - Properties
     var seasondata: [Seasons] = []
+    var seasonsModel: SeasonsModel?
     var present: SeasonViewPresent!
-    
-    
+    var leagueId: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -100,17 +94,19 @@ extension SeasonsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let newViewController = StandingViewController()
-        let present = StandingsPresenter(view: newViewController)
+        let present = StandingsPresenter(view: newViewController, "/\(leagueId)/standings?season=\(seasondata[indexPath.row].year)&sort=asc")
         newViewController.present = present
         self.navigationController?.pushViewController(newViewController, animated: true)
     }
     
 }
 
-extension SeasonsViewController: UpdateView1 {
-    func didUpdateData(_ model: SeasonsModel) {
-        self.seasondata = model.data.seasons
-        self.tableView.reloadData()
+extension SeasonsViewController: ViewUpdate {
+    
+    func didUpdateData(_ model: Codable) {
+        seasonsModel = model as? SeasonsModel
+        self.seasondata = seasonsModel!.data.seasons
+        tableView.reloadData()
     }
     
     func didFailWithError(error: Error) {

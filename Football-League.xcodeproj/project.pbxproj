@@ -23,6 +23,7 @@
 		2C194A8D289D252C000D3ED0 /* StandingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C194A8C289D252C000D3ED0 /* StandingModel.swift */; };
 		2C194A8F289D2788000D3ED0 /* StandingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C194A8E289D2788000D3ED0 /* StandingsTableViewCell.swift */; };
 		2C194A91289D3030000D3ED0 /* StandingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C194A90289D3030000D3ED0 /* StandingsPresenter.swift */; };
+		2C194A94289D3EB2000D3ED0 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C194A93289D3EB2000D3ED0 /* Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2C194A8C289D252C000D3ED0 /* StandingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingModel.swift; sourceTree = "<group>"; };
 		2C194A8E289D2788000D3ED0 /* StandingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsTableViewCell.swift; sourceTree = "<group>"; };
 		2C194A90289D3030000D3ED0 /* StandingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandingsPresenter.swift; sourceTree = "<group>"; };
+		2C194A93289D3EB2000D3ED0 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +85,8 @@
 				2C18CE0B289BE04700FF5D91 /* LaunchScreen.storyboard */,
 				2C18CE0E289BE04700FF5D91 /* Info.plist */,
 				2C194A89289D1DBF000D3ED0 /* Seasons List */,
-				2C194A8A289D1E34000D3ED0 /* StandingViewController.swift */,
-				2C194A90289D3030000D3ED0 /* StandingsPresenter.swift */,
-				2C194A8E289D2788000D3ED0 /* StandingsTableViewCell.swift */,
-				2C194A8C289D252C000D3ED0 /* StandingModel.swift */,
+				2C194A92289D3E83000D3ED0 /* Standings List */,
+				2C194A93289D3EB2000D3ED0 /* Networking.swift */,
 			);
 			path = "Football-League";
 			sourceTree = "<group>";
@@ -119,6 +119,17 @@
 				2C194A83289CD92C000D3ED0 /* SeasonData.swift */,
 			);
 			path = "Seasons List";
+			sourceTree = "<group>";
+		};
+		2C194A92289D3E83000D3ED0 /* Standings List */ = {
+			isa = PBXGroup;
+			children = (
+				2C194A8A289D1E34000D3ED0 /* StandingViewController.swift */,
+				2C194A90289D3030000D3ED0 /* StandingsPresenter.swift */,
+				2C194A8E289D2788000D3ED0 /* StandingsTableViewCell.swift */,
+				2C194A8C289D252C000D3ED0 /* StandingModel.swift */,
+			);
+			path = "Standings List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +207,7 @@
 				2C18CE1D289C44B600FF5D91 /* SeasonsViewController.swift in Sources */,
 				2C194A8D289D252C000D3ED0 /* StandingModel.swift in Sources */,
 				2C18CE1B289C120A00FF5D91 /* LeaguePresenter.swift in Sources */,
+				2C194A94289D3EB2000D3ED0 /* Networking.swift in Sources */,
 				2C194A8B289D1E34000D3ED0 /* StandingViewController.swift in Sources */,
 				2C194A88289CEA98000D3ED0 /* SeasonTableViewCell.swift in Sources */,
 				2C18CE16289BE8AC00FF5D91 /* LeagueData.swift in Sources */,

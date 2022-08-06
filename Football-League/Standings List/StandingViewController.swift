@@ -28,7 +28,8 @@ class StandingViewController: UIViewController {
     
     // MARK: - Properties
     var standings: [Standings] = []
-    var present: StandingViewPresent!
+    var standingsModel: StandingModel?
+    var present: StandingsPresenter!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +38,6 @@ class StandingViewController: UIViewController {
         setupUI()
         present.viewDidLoad()
         
-        sectionNames = [ "iPhone", "iPad", "Apple Watch" ]; //Main Heading Names
-        sectionItems = [ ["iPhone 5", "iPhone 5s", "iPhone 6", "iPhone 6 Plus", "iPhone 7", "iPhone 7 Plus"], // Sub Heading Names
-        ["iPad Mini", "iPad Air 2", "iPad Pro", "iPad Pro 9.7"],
-        ["Apple Watch", "Apple Watch 2", "Apple Watch 2 (Nike)"]
-        ];
     }
     
     lazy var tableView: UITableView = {
@@ -207,15 +203,30 @@ extension StandingViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-extension StandingViewController: StandingsView {
+//extension StandingViewController: StandingsView {
+//
+//    func didUpdateData(_ model: StandingModel) {
+//        self.standings = model.data.standings
+//        self.tableView.reloadData()
+//    }
+//
+//    func didFailWithError(error: Error) {
+//        print(error)
+//    }
+//
+//}
+
+extension StandingViewController: ViewUpdate {
     
-    func didUpdateData(_ model: StandingModel) {
-        self.standings = model.data.standings
-        self.tableView.reloadData()
+    func didUpdateData(_ model: Codable) {
+        standingsModel = (model as! StandingModel)
+        standings = standingsModel!.data.standings
+        tableView.reloadData()
+        
     }
     
     func didFailWithError(error: Error) {
         print(error)
     }
-
+    
 }
